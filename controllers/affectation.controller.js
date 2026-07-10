@@ -18,7 +18,7 @@ exports.createAffectation = async (req, res, next) => {
     const newAffectation = await Affectation.create({ arbitreId, matchId, role });
     
     res.status(201).json({
-      message: "Arbitre affecté au match avec succès! 📋🏆",
+      message: "Arbitre affecté au match avec succès! ",
       data: newAffectation
     });
   } catch (error) {

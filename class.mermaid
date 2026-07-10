@@ -1,0 +1,42 @@
+classDiagram
+    class Arbitre {
+        +Integer id
+        +String nom
+        +String prenom
+        +String nationalite
+        +Enum confederation
+        +Enum categorie
+        +Integer experience
+        +Enum statut
+    }
+
+    class Match {
+        +Integer id
+        +String equipeDomicile
+        +String equipeExterieur
+        +String stade
+        +String villeHote
+        +DateTime dateMatch
+        +Enum phase
+    }
+
+    class Affectation {
+        +Integer id
+        +Integer arbitreId
+        +Integer matchId
+        +Enum role
+    }
+
+    class User {
+        +Integer id
+        +String nom
+        +String email
+        +String password
+        +Enum role
+    }
+
+    Arbitre "1" --> "0..*" Affectation : hasMany
+    Match "1" --> "0..*" Affectation : hasMany
+    Affectation "0..*" --> "1" Arbitre : belongsTo
+    Affectation "0..*" --> "1" Match : belongsTo
+    Arbitre "0..*" <--> "0..*" Match : belongsToMany
